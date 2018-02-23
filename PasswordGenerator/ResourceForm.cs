@@ -56,11 +56,13 @@ namespace PasswordGenerator
                 {
                     (this.Owner as MainForm).processResource(this.resourceId, resourceName.Text.Trim(), uniqueKey.Text.Trim(), addNonAlphaNumericCharsOverride.Checked);
                     this.Close();
-                } else
+                }
+                else
                 {
                     MessageBox.Show(this, "No resource unique key specified", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-            } else
+            }
+            else
             {
                 MessageBox.Show(this, "No resource name specified", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }

@@ -126,7 +126,8 @@ namespace PasswordGenerator
                         res.UniqueKey = key;
                         res.UseSpecialChars = useSpecialChars;
                     }
-                } else
+                }
+                else
                 {
                     maxResourceId = Math.Max(res.Id, maxResourceId);
                 }
@@ -438,7 +439,7 @@ namespace PasswordGenerator
         {
             Resource resource = resourceSelect.SelectedItem as Resource;
             List<Resource> newList = new List<Resource>();
-            foreach(Resource res in this.resources)
+            foreach (Resource res in this.resources)
             {
                 if (resource.Id != res.Id)
                 {
