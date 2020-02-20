@@ -28,7 +28,7 @@ namespace PasswordGenerator
         /// Set form unique key value
         /// </summary>
         /// <param name="value"></param>
-        public void setUniqueKey(string value)
+        public void SetUniqueKey(string value)
         {
             uniqueKey.Text = value;
         }
@@ -54,7 +54,7 @@ namespace PasswordGenerator
             {
                 if (uniqueKey.Text.Trim().Length > 0)
                 {
-                    (this.Owner as MainForm).processResource(this.resourceId, resourceName.Text.Trim(), uniqueKey.Text.Trim(), addNonAlphaNumericCharsOverride.Checked);
+                    (this.Owner as MainForm).ProcessResource(this.resourceId, resourceName.Text.Trim(), uniqueKey.Text.Trim(), addNonAlphaNumericCharsOverride.Checked);
                     this.Close();
                 }
                 else

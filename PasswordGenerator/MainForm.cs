@@ -45,13 +45,13 @@ namespace PasswordGenerator
         public MainForm()
         {
             InitializeComponent();
-            this.loadResources();
+            this.LoadResources();
         }
 
         /// <summary>
         /// Load resources from file
         /// </summary>
-        public void loadResources()
+        public void LoadResources()
         {
             resourceSelect.Items.Clear();
             this.resources = new List<Resource>();
@@ -82,13 +82,13 @@ namespace PasswordGenerator
             {
                 // Skip exception because we allready processed default resource and file content is no required to work
             }
-            this.generateNewPassword();
+            this.GenerateNewPassword();
         }
 
         /// <summary>
         /// Save resources to file
         /// </summary>
-        public void saveResources()
+        public void SaveResources()
         {
             try
             {
@@ -102,7 +102,7 @@ namespace PasswordGenerator
             {
                 MessageBox.Show("Cannot save resources", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            this.loadResources(); // Reload resources
+            this.LoadResources(); // Reload resources
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace PasswordGenerator
         /// <param name="name">Display name of resource</param>
         /// <param name="key">Resource unique key</param>
         /// <param name="useSpecialChars">Use special chars override for resource</param>
-        public void processResource(int id, string name, string key, bool useSpecialChars = true)
+        public void ProcessResource(int id, string name, string key, bool useSpecialChars = true)
         {
             int maxResourceId = DEFAULT_RESOURCE_ID;
             List<Resource> newList = new List<Resource>();
@@ -136,7 +136,7 @@ namespace PasswordGenerator
             {
                 this.resources.Add(new Resource(maxResourceId + 1, name, key, useSpecialChars));
             }
-            this.saveResources();
+            this.SaveResources();
         }
 
         /// <summary>
@@ -296,7 +296,7 @@ namespace PasswordGenerator
         /// <summary>
         /// Generate password for specified pass phrase and unique key
         /// </summary>
-        public void generateNewPassword()
+        public void GenerateNewPassword()
         {
             string value = keyPhrase.Text;
             if (value.Length > 0)
@@ -367,7 +367,7 @@ namespace PasswordGenerator
         /// <param name="e"></param>
         private void keyPhrase_TextChanged(object sender, EventArgs e)
         {
-            this.generateNewPassword();
+            this.GenerateNewPassword();
         }
 
         /// <summary>
@@ -379,7 +379,7 @@ namespace PasswordGenerator
         {
             int maxChars = Convert.ToInt32(numChars.Value);
             ResourceForm resourceForm = new ResourceForm();
-            resourceForm.setUniqueKey(this.GenerateRandomKey(maxChars));
+            resourceForm.SetUniqueKey(this.GenerateRandomKey(maxChars));
             resourceForm.ShowDialog(this);
         }
 
@@ -390,7 +390,7 @@ namespace PasswordGenerator
         /// <param name="e"></param>
         private void numChars_ValueChanged(object sender, EventArgs e)
         {
-            this.generateNewPassword();
+            this.GenerateNewPassword();
         }
 
         /// <summary>
@@ -400,7 +400,7 @@ namespace PasswordGenerator
         /// <param name="e"></param>
         private void addNonAlphaNumericChars_CheckedChanged(object sender, EventArgs e)
         {
-            this.generateNewPassword();
+            this.GenerateNewPassword();
         }
 
         /// <summary>
@@ -427,7 +427,7 @@ namespace PasswordGenerator
             addNonAlphaNumericChars.Enabled = !(resource != null && resource.Id > 0);
             editResourceButton.Enabled = resource != null && resource.Id > 0;
             removeResourceButton.Enabled = resource != null && resource.Id > 0;
-            this.generateNewPassword();
+            this.GenerateNewPassword();
         }
 
         /// <summary>
@@ -447,7 +447,7 @@ namespace PasswordGenerator
                 }
             }
             this.resources = newList;
-            this.saveResources();
+            this.SaveResources();
         }
     }
 }
